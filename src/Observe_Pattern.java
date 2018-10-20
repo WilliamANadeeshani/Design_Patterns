@@ -13,7 +13,7 @@ public class Observe_Pattern {
 
         youtube.liveNewMovie(flash);
         youtube.liveNewCricketVideo(AsianCup);
-        youtube.liveVideoChanged();
+        youtube.notifyObservers();
     }
 }
 
@@ -22,16 +22,16 @@ public class Observe_Pattern {
 /*Subject or Publisher*/
 interface Subject {
 
-    public void register(Subscriber subscriber);
+    void register(Subscriber subscriber);
 
-    public void unregister(Subscriber subscriber);
+    void unregister(Subscriber subscriber);
 
-    public void notifyObservers();
+    void notifyObservers();
 }
 
 class MyYoutube implements Subject {
 
-    ArrayList<Subscriber> channelSubscribers;
+    private ArrayList<Subscriber> channelSubscribers;
     private Movie movie;
     private Cricket cricket;
 
@@ -59,15 +59,12 @@ class MyYoutube implements Subject {
         }
     }
 
-    public void liveVideoChanged(){
-        this.notifyObservers();
-    }
 
-    public void liveNewMovie(Movie movie){
+    void liveNewMovie(Movie movie){
         this.movie = movie;
     }
 
-    public void liveNewCricketVideo(Cricket cricket){
+    void liveNewCricketVideo(Cricket cricket){
         this.cricket = cricket;
     }
 
@@ -81,7 +78,7 @@ class MyYoutube implements Subject {
 
 /*Observer classes*/
 interface Subscriber {
-    public void update(Movie movie, Cricket cricket);
+    void update(Movie movie, Cricket cricket);
 }
 
 class CricketSubscriber implements Subscriber, LiveVideosDisplay {
@@ -119,7 +116,7 @@ class MovieSubscriber implements Subscriber, LiveVideosDisplay {
 
 /*Update details*/
 interface LiveVideosDisplay {
-    public void live();
+    void live();
 }
 
 class Movie {
@@ -132,11 +129,11 @@ class Movie {
         System.out.println(name + "(" + this.year + ") now uploaded to the channel.");
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public int getYear() {
+    int getYear() {
         return year;
     }
 }
@@ -151,11 +148,11 @@ class Cricket {
         System.out.println(this.Match + " " + this.type + " match now uploaded to the channel.");
     }
 
-    public String getMatch() {
+    String getMatch() {
         return Match;
     }
 
-    public String getType() {
+    String getType() {
         return type;
     }
 }
