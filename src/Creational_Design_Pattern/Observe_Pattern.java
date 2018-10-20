@@ -1,3 +1,5 @@
+package Creational_Design_Pattern;
+
 import java.util.ArrayList;
 
 public class Observe_Pattern {
@@ -19,7 +21,7 @@ public class Observe_Pattern {
 
 
 
-/*Subject or Publisher*/
+/*Creational_Design_Pattern.Subject or Publisher*/
 interface Subject {
 
     void register(Subscriber subscriber);
@@ -108,7 +110,7 @@ class MovieSubscriber implements Subscriber, LiveVideosDisplay {
 
     @Override
     public void live() {
-        System.out.println("This is movie live time. Now live --> Movie: " + movie.getName() + ", Year:" + movie.getYear());
+        System.out.println("This is movie live time. Now live --> Creational_Design_Pattern.Movie: " + movie.getName() + ", Year:" + movie.getYear());
     }
 }
 

@@ -1,3 +1,5 @@
+package Creational_Design_Pattern;
+
 //*Interfaces hierarchy*/
 interface Fly {
     String fly();
@@ -13,7 +15,7 @@ public class Strategy_Pattern {
 
 }
 
-/*Vehicle Hierarchy*/
+/*Creational_Design_Pattern.Vehicle Hierarchy*/
 class Vehicle {
     private int wheels;
     private String type;
@@ -51,7 +53,7 @@ class Vehicle {
 class Car extends Vehicle {
     Car() {
         this.setWheels(4);
-        this.setType("Car");
+        this.setType("Creational_Design_Pattern.Car");
         this.setFlyingType(new isntFly());
     }
 
@@ -61,7 +63,7 @@ class Car extends Vehicle {
 class Plane extends Vehicle {
     Plane() {
         this.setWheels(3);
-        this.setType("Plane");
+        this.setType("Creational_Design_Pattern.Plane");
         this.setFlyingType(new isFly());
     }
 }
@@ -69,7 +71,7 @@ class Plane extends Vehicle {
 class isFly implements Fly {
     @Override
     public String fly() {
-        return "It can Fly";
+        return "It can Creational_Design_Pattern.Fly";
     }
 }
 
